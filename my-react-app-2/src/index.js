@@ -5,6 +5,10 @@ import List from "./Apps/TodoApp";
 import NavbarApp from "./Apps/NavbarApp";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import TableDataApp from "./Apps/TableDataApp";
+import ModalApp from "./Apps/ModalApp";
+import MyTextArea from "./components/TextArea";
+import MyForm from "./components/Form";
+import { NoteForm } from "./DNoteForm";
 
 const demo = {
   backgroundColor: "red",
@@ -37,7 +41,15 @@ class Clock extends React.Component {
     return (
       <div>
         <NavbarApp />
+        <NoteForm/>
         <TableDataApp />
+        
+        <div>
+          <MyTextArea />
+        </div>
+
+        
+
       </div>
     );
   }
