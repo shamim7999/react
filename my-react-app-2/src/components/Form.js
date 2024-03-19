@@ -1,10 +1,12 @@
 import React from "react";
 
-export default function MyForm({email,
-  name,
-  handleChange,
+export default function MyForm({
   handleSubmit,
-  password}) {
+  handleChange,
+  firstName,
+  lastName,
+  userName
+  }) {
 
     
 
@@ -12,17 +14,17 @@ export default function MyForm({email,
         <>
             <form action="" onSubmit={handleSubmit}>
     <div>
-      <label htmlFor="name">Name: </label>
-      <input type="text" name="name" id="name" value={name} onChange={handleChange} />
+      <label htmlFor="firstName">First Name: </label>
+      <input type="text" name="firstName" id="firstName" value={firstName} onChange={handleChange} />
     </div>
 
     <div>
-      <label htmlFor="email">Email: </label>
-      <input type="email" name="email" id="email" value={email} onChange={handleChange} />
+      <label htmlFor="lastName">Last Name: </label>
+      <input type="text" name="lastName" id="lastName" value={lastName} onChange={handleChange} />
     </div>
     <div>
-      <label htmlFor="password">Password: </label>
-      <input type="password" name="password" id="password" value={password} onChange={handleChange} />
+      <label htmlFor="userName">User Name: </label>
+      <input type="text" name="userName" id="userName" value={userName} onChange={handleChange} />
     </div>
     <div>
       <button type="submit">Submit</button>

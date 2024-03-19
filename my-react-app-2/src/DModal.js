@@ -4,12 +4,12 @@ import Modal from "react-bootstrap/Modal";
 import MyForm from "./components/Form";
 
 export const DModal = ({
-  email,
-  name,
-  handleChange,
   handleSubmit,
-  password,
-}) => {
+  handleChange,
+  firstName,
+  lastName,
+  userName
+  }) => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -27,7 +27,7 @@ export const DModal = ({
           <Modal.Title>Modal heading</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <MyForm handleChange={handleChange} handleSubmit={handleSubmit} name={name} password = {password} email={email}/>
+          <MyForm handleChange={handleChange} handleSubmit={handleSubmit} firstName={firstName} lastName = {lastName} userName={userName}/>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>

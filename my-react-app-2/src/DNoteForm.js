@@ -1,11 +1,16 @@
 import React, { useState } from 'react'
-import NavScrollExample from './DNavbar'
+import { v4 as uuidv4 } from 'uuid';
 import Button from 'react-bootstrap/esm/Button'
 import { DModal } from './DModal'
 
+
+import NavScrollExample from './DNavbar'
+import UserList from './data/UserData';
+
+
 export const NoteForm = () => {
-  const [user, setUser] = useState({name: '', email: '', password: ''});
-    const {name, email, password} = user;
+     const [user, setUser] = useState({id: uuidv4(), firstName: '', lastName: '', userName: ''});
+    const {id, firstName, lastName, userName} = user;
 
     const handleChange = (e) => {
       // const fieldName = e.target.name;
@@ -24,13 +29,16 @@ export const NoteForm = () => {
   const handleSubmit = (e) => {
      
       console.log("Form Submitted", user);
+      UserList.push(user);
+      alert('New User Added');
+      setUser({id: uuidv4() ,firstName: '', lastName: '', userName: ''});
       e.preventDefault();
   }
   return (
     <div >
         
 
-        <DModal handleChange={handleChange} handleSubmit={handleSubmit} name={name} password = {password} email={email}/>
+        <DModal handleChange={handleChange} handleSubmit={handleSubmit} firstName={firstName} lastName = {lastName} userName={userName} />
     </div>
-  )
+  );
 }
