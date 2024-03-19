@@ -1,10 +1,16 @@
 import Table from 'react-bootstrap/Table';
 import UserList from '../data/UserData';
 
+
+function handleClick(user){
+    console.log(user.firstName);
+  } 
+
 function TableData() {
 
    let users = [...UserList]; 
-
+  
+  
 
   return (
     <Table striped bordered hover className='text-center'>
@@ -26,7 +32,7 @@ function TableData() {
                 <td>{user.lastName}</td>
                 <td>{user.userName}</td>
                 <td>
-                    <button className='btn btn-success'>Update</button> &nbsp;
+                    <button className='btn btn-success' onClick={() => handleClick(user)}>Update</button> &nbsp;
                     <button className='btn btn-danger'>Delete</button>
                 </td>
             </tr>
