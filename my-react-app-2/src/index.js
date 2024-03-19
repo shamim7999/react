@@ -2,6 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./Apps/App";
 import List from "./Apps/TodoApp";
+import NavbarApp from "./Apps/NavbarApp";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import TableDataApp from "./Apps/TableDataApp";
 
 const demo = {
   backgroundColor: "red",
@@ -33,14 +36,8 @@ class Clock extends React.Component {
   render() {
     return (
       <div>
-        <h1 className="headingStyle">Hello React, create apppppopopopo!</h1>
-        <h2 style={demo}>This is H2</h2>
-        <h3 className="headingStyle">{this.props.children}</h3>
-        <h1 className="headingStyle">
-          {this.state.date.toLocaleTimeString(this.props.locale)}
-        </h1>
-        <App />
-        <List />
+        <NavbarApp />
+        <TableDataApp />
       </div>
     );
   }
@@ -65,3 +62,15 @@ root.render(
     <p>I am children</p>
   </Clock>
 );
+
+
+
+
+// <h1 className="headingStyle">Hello React, create apppppopopopo!</h1>
+        // <h2 style={demo}>This is H2</h2>
+        // <h3 className="headingStyle">{this.props.children}</h3>
+        // <h1 className="headingStyle">
+        //   {this.state.date.toLocaleTimeString(this.props.locale)}
+        // </h1>
+        // <App />
+        // <List />
