@@ -1,38 +1,14 @@
-import React from "react";
 import { v4 as uuidv4 } from 'uuid';
 
 let UserList = [
     {
         id: uuidv4(),
-        firstName: "Shamim",
-        lastName: "Sarker",
-        userName: "shamim7999"
-    },
-    {
-        id: uuidv4(),
-        firstName: "Ahmed",
-        lastName: "Sarker",
-        userName: "shamim7999"
-    },
-    {
-        id: uuidv4(),
-        firstName: "Alif",
-        lastName: "Sarker",
-        userName: "shamim7999"
-    },
-    {
-        id: uuidv4(),
-        firstName: "Ditu Vai",
-        lastName: "Sarker",
-        userName: "shamim7999"
-    },
-    {
-        id: uuidv4(),
-        firstName: "Sabbir",
-        lastName: "Sarker",
-        userName: "shamim7999"
+        title: "Task 1",
+        description: "Nothing to add more",
+        priority: '1',
+        created: new Date(),
+        updated: new Date()
     }
-
 ];
 
 export default UserList;

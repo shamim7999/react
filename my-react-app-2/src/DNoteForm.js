@@ -1,44 +1,60 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import Button from 'react-bootstrap/esm/Button'
-import { DModal } from './DModal'
+import Button from 'react-bootstrap/esm/Button';
+import { DModal } from './DModal';
+import NavScrollExample from './DNavbar';
 
-
-import NavScrollExample from './DNavbar'
-import UserList from './data/UserData';
-
+// Retrieve user data from localStorage or initialize with an empty array if not present
+const storedUserList = JSON.parse(localStorage.getItem('userList')) || [];
 
 export const NoteForm = () => {
-     const [user, setUser] = useState({id: uuidv4(), firstName: '', lastName: '', userName: ''});
-    const {id, firstName, lastName, userName} = user;
+  const [user, setUser] = useState({
+    id: uuidv4(),
+    title: '',
+    description: '',
+    priority: '',
+    created: new Date(),
+    updated: new Date()
+  });
 
-    const handleChange = (e) => {
-      // const fieldName = e.target.name;
+  const { id, title, description, priority, created, updated } = user;
 
-      // if(fieldName === 'name') {
-      //     setUser({name: e.target.value, email, password});
-      // } else if(fieldName === 'email') {
-      //     setUser({name, email: e.target.value, password});
-      // } else if(fieldName === 'password') {
-      //     setUser({name, email, password: e.target.value});
-      // }
-
-      setUser({...user, [e.target.name]: [e.target.value]});
-  } 
+  const handleChange = (e) => {
+    setUser({ ...user, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = (e) => {
-     
-      console.log("Form Submitted", user);
-      UserList.push(user);
-      alert('New User Added');
-      setUser({id: uuidv4() ,firstName: '', lastName: '', userName: ''});
-      e.preventDefault();
-  }
-  return (
-    <div >
-        
+    e.preventDefault();
+    const newUser = { ...user };
+    storedUserList.push(newUser);
+    console.log('New user added:', newUser);
+    console.log('Stored user list:', storedUserList);
+    localStorage.setItem('userList', JSON.stringify(storedUserList));
+    console.log('localStorage updated.');
+    setUser({
+      id: uuidv4(),
+      title: '',
+      description: '',
+      priority: '',
+      created: new Date(),
+      updated: new Date()
+    });
+};
 
-        <DModal handleChange={handleChange} handleSubmit={handleSubmit} firstName={firstName} lastName = {lastName} userName={userName} />
+
+  return (
+    <div>
+      <DModal
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+        key={id}
+        id={id}
+        title={title}
+        description={description}
+        priority={priority}
+        created={created}
+        updated={updated}
+      />
     </div>
   );
-}
+};

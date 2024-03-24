@@ -6,9 +6,12 @@ import MyForm from "./components/Form";
 export const DModal = ({
   handleSubmit,
   handleChange,
-  firstName,
-  lastName,
-  userName
+  id,
+  title,
+  description,
+  priority,
+  created,
+  updated
   }) => {
   const [show, setShow] = useState(false);
 
@@ -18,7 +21,7 @@ export const DModal = ({
     <>
       <div className="text-center mt-3">
         <Button className="" variant="outline-primary" onClick={handleShow}>
-          Add User
+            Add Todo
         </Button>
       </div>
 
@@ -27,7 +30,17 @@ export const DModal = ({
           <Modal.Title>Modal heading</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <MyForm handleChange={handleChange} handleSubmit={handleSubmit} firstName={firstName} lastName = {lastName} userName={userName}/>
+          <MyForm handleChange={handleChange} 
+          handleSubmit={handleSubmit} 
+          
+          id={id}
+          title={title}
+          description={description}
+          priority={priority}
+          created={created}
+          updated={updated}
+          
+          />
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>

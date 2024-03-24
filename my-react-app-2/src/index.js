@@ -1,19 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./Apps/App";
-import List from "./Apps/TodoApp";
 import NavbarApp from "./Apps/NavbarApp";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import TableDataApp from "./Apps/TableDataApp";
-import ModalApp from "./Apps/ModalApp";
-import MyTextArea from "./components/TextArea";
-import MyForm from "./components/Form";
 import { NoteForm } from "./DNoteForm";
 
-const demo = {
-  backgroundColor: "red",
-  textAlign: "center",
-};
+// const demo = {
+//   backgroundColor: "red",
+//   textAlign: "center",
+// };
 
 class Clock extends React.Component {
   constructor(props) {
@@ -44,9 +39,6 @@ class Clock extends React.Component {
         <NoteForm/>
         <TableDataApp />
         
-        <div>
-          <MyTextArea />
-        </div>
 
         
 
@@ -71,7 +63,7 @@ class Clock extends React.Component {
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Clock locale="bn-BD">
-    <p>I am children</p>
+    
   </Clock>
 );
 
