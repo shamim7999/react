@@ -26,31 +26,29 @@ const DNoteForm = () => {
   };
 
   const handleUpdateTodo = (todo) => {
-    const updatedTodos = todos.map((temp) => {
+     const updatedTodos = todos.map((temp) => {
       if (todo.id === temp.id) {
         temp = todo;
       }
       return temp;
     });
 
+    
+
     setTodos(updatedTodos);
+
   };
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-  <div style={{ marginRight: 'auto' }}>
-    <DModal title="Add Todo" handleNewTodo={handleNewTodo} />
-    <CompletedTodos />
-  </div>
-  <div>
-    <Todos
-      handleUpdateTodo={handleUpdateTodo}
-      todos={todos}
-      handleDelete={handleDelete}
-    />
-  </div>
-</div>
-
+    <div>
+      <DModal title="Add Todo" handleNewTodo={handleNewTodo} />
+      {/* <CompletedTodos  /> */}
+      <Todos
+        handleUpdateTodo={handleUpdateTodo}
+        todos={todos}
+        handleDelete={handleDelete}
+      />
+    </div>
   );
 };
 
