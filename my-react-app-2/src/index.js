@@ -2,13 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import NavbarApp from "./Apps/NavbarApp";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import TableDataApp from "./Apps/TableDataApp";
-import { NoteForm } from "./DNoteForm";
+import DNoteForm from "./DNoteForm";
 
-// const demo = {
-//   backgroundColor: "red",
-//   textAlign: "center",
-// };
+
+
 
 class Clock extends React.Component {
   constructor(props) {
@@ -36,8 +33,8 @@ class Clock extends React.Component {
     return (
       <div>
         <NavbarApp />
-        <NoteForm/>
-        <TableDataApp />
+        <DNoteForm />
+        
         
 
         
@@ -62,9 +59,15 @@ class Clock extends React.Component {
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <Clock locale="bn-BD">
-    
-  </Clock>
+  <div>
+  <NavbarApp />
+  <DNoteForm />
+  
+  
+
+  
+
+</div>
 );
 
 

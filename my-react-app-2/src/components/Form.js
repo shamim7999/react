@@ -1,18 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
+import { v4 as uuidv4 } from 'uuid';
+
 import '../css/Form-Style.css'
 
 export default function MyForm({
-  handleSubmit,
-  handleChange,
-  id,
-  title,
-  description,
-  priority,
-  created,
-  updated
+  handleNewTodo={handleNewTodo}
   }) {
 
-    
+  const [todo, setTodo] = useState({id: uuidv4(), title: "", description: "", priority: '1', created: new Date(), updated: new Date() });
+  const {id, title, description, priority, created, updated} = todo;
+  console.log('I am in Form');  
+  const handleChange = (e) => {
+    const fieldName = e.target.name;
+    const value = e.target.value;
+
+    setTodo((prevTodo) => ({
+      ...prevTodo,
+      [fieldName]: value,
+    }));
+
+    //console.log(fieldName, value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(`Hello Form`);
+    handleNewTodo(todo);
+    setTodo({id: uuidv4(), title: "", description: "", priority: '1', created: new Date(), updated: new Date() });
+  };
+
 
     return (
         <>
