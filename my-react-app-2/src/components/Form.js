@@ -4,10 +4,10 @@ import { v4 as uuidv4 } from 'uuid';
 import '../css/Form-Style.css'
 
 export default function MyForm({
-  handleNewTodo={handleNewTodo}
+  handleTodo, myData, isUpdate
   }) {
 
-  const [todo, setTodo] = useState({id: uuidv4(), title: "", description: "", priority: '1', created: new Date(), updated: new Date() });
+  const [todo, setTodo] = useState(isUpdate? myData : {id: uuidv4(), title: "", description: "", priority: '1', created: new Date(), updated: new Date() });
   const {id, title, description, priority, created, updated} = todo;
   console.log('I am in Form');  
   const handleChange = (e) => {
@@ -25,7 +25,9 @@ export default function MyForm({
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(`Hello Form`);
-    handleNewTodo(todo);
+    todo.updated = new Date();
+    setTodo(todo);
+    handleTodo(todo);
     setTodo({id: uuidv4(), title: "", description: "", priority: '1', created: new Date(), updated: new Date() });
   };
 
