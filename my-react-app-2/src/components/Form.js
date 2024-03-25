@@ -30,7 +30,7 @@ export default function MyForm({
     todo.updated = new Date();
     setTodo(todo);
     handleTodo(todo);
-    setTodo({id: uuidv4(), title: "", description: "", priority: '1', created: new Date(), updated: new Date() });
+    setTodo({id: uuidv4(), title: "", description: "", priority: '1',  created: new Date(), updated: new Date() });
     handleClose();
   };
 
@@ -49,7 +49,9 @@ export default function MyForm({
           <label htmlFor="description">Description: </label>
           <input type="text" name="description" id="description" value={description} onChange={handleChange} />
         </div>
-    
+
+        
+
         <div>
       <label htmlFor="priority">Priority: </label>
       <select name="priority" id="priority" value={priority} onChange={handleChange}>

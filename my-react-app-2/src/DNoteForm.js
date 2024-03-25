@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { DModal } from "./DModal";
 import Todos from "./components/Todos";
-import CompletedTodos from "./components/CompletedTodos";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Button } from "react-bootstrap";
 
 const DNoteForm = () => {
   const [todos, setTodos] = useState(
@@ -10,6 +11,8 @@ const DNoteForm = () => {
       : []
   );
 
+  const [viewTodos, setViewTodos] = useState(todos);
+
   const [open, setOpen] = useState(false);
 
   console.log(todos);
@@ -17,11 +20,13 @@ const DNoteForm = () => {
   useEffect(() => {
     console.log("useEffect called");
     localStorage.setItem("todos", JSON.stringify([...todos]));
+    setViewTodos(todos);
   }, [todos]);
 
   const handleNewTodo = (newTodo) => {
     console.log("I am here");
     setTodos([...todos, newTodo]);
+    setViewTodos(todos);
   };
 
   const handleDelete = (id) => {
@@ -47,8 +52,22 @@ const DNoteForm = () => {
     setTodos(updatedTodos);
   };
 
+  const handleShowAllTodos = () => {
+      setViewTodos(todos);
+  }
+
+  const handleShowCompletedTodos = () => {
+      const completedTodos = todos.filter((todo) => todo.priority === '1');
+      setViewTodos(completedTodos);
+  }
+
   return (
     <div>
+      <div className='text-center mt-5'>
+        <Button variant="primary" onClick={handleShowAllTodos}>All Todos</Button>{' '}
+        <Button variant="warning" onClick={handleShowCompletedTodos} >Completed Todos</Button>{' '}
+        <Button variant="danger">Failed Todos</Button>{' '}
+    </div>
       <DModal
         
         title="Add Todo"
@@ -57,11 +76,10 @@ const DNoteForm = () => {
         handleCloseFromDNoteForm={handleCloseFromDNoteForm}
         handleOpen={handleOpen}
       />
-      {/* <CompletedTodos  /> */}
 
       <Todos
         handleUpdateTodo={handleUpdateTodo}
-        todos={todos}
+        todos={viewTodos}
         handleDelete={handleDelete}
         open={open}
         handleCloseFromDNoteForm={handleCloseFromDNoteForm}

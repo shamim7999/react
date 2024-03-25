@@ -1,9 +1,7 @@
 import React from "react";
-import DNoteForm from "../DNoteForm";
 import { DModal } from "../DModal";
 import "../css/Todos-Style.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Button } from "react-bootstrap";
 
 const Todo = ({
   todo,

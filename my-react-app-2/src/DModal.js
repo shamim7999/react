@@ -57,7 +57,7 @@ export const DModal = ({
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>{title} form</Modal.Title>
+          <Modal.Title>{title} todo</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <MyForm

@@ -1,6 +1,7 @@
 import React from "react";
-import { Table } from "react-bootstrap";
 import Todo from "./Todo"; // Import the Todo component
+
+
 import "../css/Card-Style.css";
 import CardWithPlus from "./AddIcon";
 
@@ -34,7 +35,8 @@ const Todos = ({
                   
                 />
               </div>
-            ))}
+            ))
+            }
             <div>
               <CardWithPlus onClick={handleClick} />
             </div>
