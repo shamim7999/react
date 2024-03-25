@@ -7,8 +7,8 @@ export default function MyForm({
   handleTodo, myData, isUpdate, handleClose
   }) {
 
-  const [todo, setTodo] = useState(isUpdate? myData : {id: uuidv4(), title: "", description: "", priority: '1', created: new Date(), updated: new Date() });
-  const {id, title, description, priority, created, updated} = todo;
+  const [todo, setTodo] = useState(isUpdate? myData : {id: uuidv4(), title: "", description: "", priority: '1', _status: 'Pending', created: new Date(), updated: new Date() });
+  const {id, title, description, priority, _status, created, updated} = todo;
   console.log('I am in Form');  
   const handleChange = (e) => {
     const fieldName = e.target.name;
@@ -30,12 +30,12 @@ export default function MyForm({
     todo.updated = new Date();
     setTodo(todo);
     handleTodo(todo);
-    setTodo({id: uuidv4(), title: "", description: "", priority: '1',  created: new Date(), updated: new Date() });
+    setTodo({id: uuidv4(), title: "", description: "", priority: '1', _status: 'Pending', created: new Date(), updated: new Date() });
     handleClose();
   };
 
     const handleReset = () => {
-      setTodo({id: uuidv4(), title: "", description: "", priority: '1', created: new Date(), updated: new Date() });
+      setTodo({id: uuidv4(), title: "", description: "", priority: '1', _status: 'Pending', created: new Date(), updated: new Date() });
     }
     return (
         <>
@@ -50,7 +50,14 @@ export default function MyForm({
           <input type="text" name="description" id="description" value={description} onChange={handleChange} />
         </div>
 
-        
+        <div>
+      <label htmlFor="_status">Status: </label>
+      <select name="_status" id="_status" value={_status} onChange={handleChange}>
+        <option value="Pending">Pending</option>
+        <option value="In Progress">In Progress</option>
+        <option value="Completed">Completed</option>
+      </select>
+    </div>
 
         <div>
       <label htmlFor="priority">Priority: </label>

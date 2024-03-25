@@ -3,6 +3,7 @@ import { DModal } from "./DModal";
 import Todos from "./components/Todos";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button } from "react-bootstrap";
+import SearchBar from "./components/SearchPage";
 
 const DNoteForm = () => {
   const [todos, setTodos] = useState(
@@ -57,17 +58,40 @@ const DNoteForm = () => {
   }
 
   const handleShowCompletedTodos = () => {
-      const completedTodos = todos.filter((todo) => todo.priority === '1');
+      const completedTodos = todos.filter((todo) => todo._status === 'Completed');
       setViewTodos(completedTodos);
   }
 
+  
+  
+  const handleShowPendingTodos = () => {
+    const pendingTodos = todos.filter((todo) => todo._status === 'Pending');
+    setViewTodos(pendingTodos);
+  }
+
+  const handleShowInProgressTodos = () => {
+    const inProgressTodos = todos.filter((todo) => todo._status === 'In Progress');
+    setViewTodos(inProgressTodos);
+  }
+
+  const handleSearch = (searchText) => {
+    const filteredTodos = todos.filter((todo) =>
+      todo.title.toLowerCase().includes(searchText.toLowerCase()) ||
+      todo.description.toLowerCase().includes(searchText.toLowerCase())
+    );
+    setViewTodos(filteredTodos);
+};
+
+
   return (
     <div>
-      <div className='text-center mt-5'>
+      <div className='text-center m-5'>
+      <Button variant="success" onClick={handleShowInProgressTodos}>In Progress Todos</Button>{' '}
+        <Button variant="secondary" onClick={handleShowPendingTodos} >Pending Todos</Button>{' '}
         <Button variant="primary" onClick={handleShowAllTodos}>All Todos</Button>{' '}
         <Button variant="warning" onClick={handleShowCompletedTodos} >Completed Todos</Button>{' '}
-        <Button variant="danger">Failed Todos</Button>{' '}
     </div>
+      <SearchBar handleSearch={handleSearch}/>
       <DModal
         
         title="Add Todo"
@@ -76,7 +100,7 @@ const DNoteForm = () => {
         handleCloseFromDNoteForm={handleCloseFromDNoteForm}
         handleOpen={handleOpen}
       />
-
+      
       <Todos
         handleUpdateTodo={handleUpdateTodo}
         todos={viewTodos}
